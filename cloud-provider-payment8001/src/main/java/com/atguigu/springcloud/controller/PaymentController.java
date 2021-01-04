@@ -13,7 +13,7 @@ public class PaymentController {
     @Autowired
     private PaymentService paymentService;
 
-    @PostMapping("/Payment/create")
+    @PostMapping("/payment/create")
     public CommonResult create(@RequestBody Payment payment){
         int result = paymentService.create(payment);
         if (result>0){
@@ -22,8 +22,8 @@ public class PaymentController {
             return new CommonResult(444,"插入失败",payment);
         }
     }
-    @GetMapping("/Payment/get/{id}")
-    public CommonResult getPaymentById(@PathVariable Long id){
+    @GetMapping("/payment/get/{id}")
+    public CommonResult<Payment> getPaymentById(@PathVariable Long id){
         Payment payment = paymentService.getPaymentById(id);
         if (payment != null){
             return new CommonResult(200,"查询成功",payment);
